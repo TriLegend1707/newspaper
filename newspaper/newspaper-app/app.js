@@ -1,55 +1,99 @@
 const express = require('express');
-const bodyParser = require('body-parser');
-const passport = require('passport');
-const passportConfig = require('./config/passport'); // require the object, not function
-passportConfig(passport); // now use it directly
+const mongoose = require('mongoose');
+const Article = require('./models/article'); // Điều chỉnh đường dẫn đến mô hình bài viết của bạn
+const { MongoClient } = require('mongodb');
 
+// Kết nối Mongoose
+mongoose.connect('mongodb://127.0.0.1:27017/newspaper')
+    .then(() => console.log('Successfully connected to MongoDB via Mongoose'))
+    .catch(err => console.error('Could not connect to MongoDB via Mongoose...', err));
 
-const app = express();
+app.use(express.json());
 
-// Middleware
-app.use(bodyParser.json());
-app.use(passport.initialize());
+// Hàm kiểm tra cấu trúc bài viết
+const validateArticleStructure = (article) => {
+    return (
+        typeof article.title === 'string' &&
+        typeof article.content === 'string' &&
+        typeof article.author === 'string' &&
+        typeof article.views === 'number' &&
+        Array.isArray(article.tags) &&
+        article.tags.every(tag => typeof tag === 'string') &&
+        article.publishedDate instanceof Date
+    );
+};
 
-// Route chính (trang chủ)
-app.get('/', (req, res) => {
-  res.send('Hello World');
+// Route API lấy danh sách bài viết
+app.get('/', async (req, res) => {
+    try {
+        const articles = await Article.find().limit(10).sort({ views: -1 }); // Lấy 10 bài viết nhiều lượt xem nhất
+        const validatedArticles = articles.filter(validateArticleStructure); // Chỉ giữ lại bài viết hợp lệ
+        res.send(validatedArticles);
+    } catch (err) {
+        console.error('Error fetching articles:', err);
+        res.status(500).send('Error fetching articles');
+    }
 });
 
-// Route đăng nhập
-app.post('/login', (req, res) => {
-  // Xử lý đăng nhập với Passport
-  passport.authenticate('local', (err, user, info) => {
-    if (err) { return res.status(500).send(err); }
-    if (!user) { return res.status(401).send(info); }
-    req.login(user, (loginErr) => {
-      if (loginErr) { return res.status(500).send(loginErr); }
-      return res.status(200).send('Đăng nhập thành công');
+// Chạy máy chủ Express
+app.listen(port, () => console.log(`Server running on http://localhost:${port}`));
+
+// Ví dụ truy vấn trực tiếp MongoDB với MongoClient
+(async () => {
+    const uri = 'mongodb://localhost:27017';
+    const client = new MongoClient(uri);
+
+    try {
+        await client.connect();
+        console.log('Successfully connected to MongoDB via MongoClient');
+
+        const db = client.db('yourDatabaseName'); // Thay 'yourDatabaseName' bằng tên cơ sở dữ liệu của bạn
+        const collection = db.collection('yourCollectionName'); // Thay 'yourCollectionName' bằng tên collection của bạn
+
+        const data = await collection.find({}).toArray();
+        console.log('Fetched data:', data); // In dữ liệu đã lấy được
+    } catch (err) {
+        console.error('Error during MongoDB operations:', err);
+    } finally {
+        await client.close(); // Đóng kết nối sau khi hoàn thành
+    }
+})();
+
+// Gửi yêu cầu HTTP tới API và kiểm tra dữ liệu
+fetch('http://localhost:3000/')
+    .then(response => response.json())
+    .then(data => {
+        if (Array.isArray(data) && data.every(validateArticleStructure)) {
+            console.log('Data format is correct:', data);
+        } else {
+            console.error('Data format is incorrect:', data);
+        }
+    })
+    .catch(error => console.error('Error during fetch:', error));
+    const express = require('express');
+    const mongoose = require('mongoose');
+    const articleRoutes = require('./routes/articles');
+    const subscriberRoutes = require('./routes/subscribers');
+    
+    const app = express();
+    const port = 3000;
+    
+    // Connect to MongoDB
+    mongoose.connect('mongodb://127.0.0.1:27017/newspaper', {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    })
+        .then(() => console.log('Successfully connected to MongoDB'))
+        .catch(err => console.error('Could not connect to MongoDB...', err));
+    
+    app.use(express.json());
+    
+    // Routes
+    app.use('/articles', articleRoutes);
+    app.use('/subscribers', subscriberRoutes);
+    
+    // Start the server
+    app.listen(port, () => {
+        console.log(`Server running on http://localhost:${port}`);
     });
-  })(req, res);
-});
-
-// Route đăng ký
-app.post('/register', (req, res) => {
-  // Xử lý đăng ký mới
-  const { username, password } = req.body;
-  // Bạn cần phải tạo phương thức createUser trong passportConfig.js
-  passportConfig.createUser(username, password, (err, user) => {
-    if (err) { return res.status(500).send(err); }
-    return res.status(200).send('Đăng ký thành công');
-  });
-});
-
-// Route khác ví dụ về profile cá nhân
-app.get('/profile', passport.authenticate('local', { session: false }), (req, res) => {
-  res.json(req.user);
-});
-
-// Khởi chạy server
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
+    
