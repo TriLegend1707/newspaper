@@ -96,4 +96,27 @@ fetch('http://localhost:3000/')
     app.listen(port, () => {
         console.log(`Server running on http://localhost:${port}`);
     });
-    
+    const express = require('express');
+const mongoose = require('mongoose');
+const articleRoutes = require('./routes/articles');
+const writerRoutes = require('./routes/writers');
+
+// Connect to MongoDB
+mongoose.connect('mongodb://127.0.0.1:27017/newspaper', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+})
+    .then(() => console.log('Successfully connected to MongoDB'))
+    .catch(err => console.error('Could not connect to MongoDB...', err));
+
+app.use(express.json());
+app.use(express.static('public'));
+
+// Routes
+app.use('/articles', articleRoutes);
+app.use('/writers', writerRoutes);
+
+// Start the server
+app.listen(port, () => {
+    console.log(`Server running on http://localhost:${port}`);
+});

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WYSIWYG Editor</title>
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+</head>
+<body>
+    <h1>Create Article</h1>
+    <form action="/articles" method="POST" enctype="multipart/form-data">
+        <label>Title:</label><br>
+        <input type="text" name="title" required><br><br>
+        
+        <label>Summary:</label><br>
+        <textarea name="summary" required></textarea><br><br>
+        
+        <label>Content:</label><br>
+        <textarea id="editor" name="content"></textarea><br><br>
+        
+        <label>Category:</label><br>
+        <input type="text" name="category" required><br><br>
+        
+        <label>Tags (comma separated):</label><br>
+        <input type="text" name="tags"><br><br>
+        
+        <label>Upload Images:</label><br>
+        <input type="file" name="images" multiple><br><br>
+        
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        tinymce.init({
+            selector: '#editor',
+            plugins: 'image link',
+            toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | outdent indent | link image',
+            images_upload_url: '/articles/upload-image',
+        });
+    </script>
+</body>
+</html>

@@ -1,17 +1,17 @@
-const Subscriber = require('../models/subscriber');
+const Writer = require('../models/writer');
 
-const authenticateSubscriber = async (req, res, next) => {
-    const email = req.header('email'); // Assume email is passed in the header for simplicity
+const authenticateWriter = async (req, res, next) => {
+    const email = req.header('email'); // Assume email is passed in header for simplicity
     try {
-        const subscriber = await Subscriber.findOne({ email });
-        if (!subscriber) {
-            return res.status(401).send('Unauthorized: Invalid subscriber');
+        const writer = await Writer.findOne({ email });
+        if (!writer) {
+            return res.status(401).send('Unauthorized: Invalid writer');
         }
-        req.subscriber = subscriber;
+        req.writer = writer;
         next();
     } catch (error) {
-        res.status(500).send('Error authenticating subscriber');
+        res.status(500).send('Error authenticating writer');
     }
 };
 
-module.exports = { authenticateSubscriber };
+module.exports = { authenticateWriter };
