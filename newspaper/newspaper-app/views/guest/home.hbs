@@ -1,0 +1,11 @@
+<h1>Welcome to our Newspaper</h1>
+
+<div class="featured-articles">
+  {{#each featuredArticles}}
+    <div class="article">
+      <h2>{{this.title}}</h2>
+      <p>{{this.summary}}</p>
+      <a href="/article/{{this.id}}">Read more</a>
+    </div>
+  {{/each}}
+</div>
