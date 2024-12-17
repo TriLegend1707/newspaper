@@ -1,0 +1,20 @@
+<h1>Tìm kiếm</h1>
+<form action="/search" method="get">
+  <input type="text" name="q" placeholder="Nhập từ khóa tìm kiếm..." required>
+  <button type="submit">Tìm kiếm</button>
+</form>
+
+<% if (searchResults.length > 0) { %>
+  <h2>Kết quả tìm kiếm</h2>
+  <ul>
+    <% searchResults.forEach(post => { %>
+      <li>
+        <a href="/post/<%= post.title %>"><%= post.title %></a>
+        <p>Ngày đăng: <%= post.date %></p>
+        <p>Chuyên mục: <%= post.category %></p>
+      </li>
+    <% }) %>
+  </ul>
+<% } else { %>
+  <p>Không tìm thấy bài viết nào.</p>
+<% } %>

@@ -1,0 +1,52 @@
+<h1>Trang Chủ</h1>
+<!-- Bài viết nổi bật -->
+<section id="featured-posts">
+  <h2>Bài viết nổi bật</h2>
+  <% featuredPosts.forEach(post => { %>
+    <div class="post">
+      <img src="<%= post.image %>" alt="<%= post.title %>">
+      <h3><%= post.title %></h3>
+      <p>Ngày đăng: <%= post.date %></p>
+      <p>Chuyên mục: <%= post.category %></p>
+    </div>
+  <% }) %>
+</section>
+
+<!-- Bài viết được xem nhiều nhất -->
+<section id="popular-posts">
+  <h2>Bài viết được xem nhiều nhất</h2>
+  <% popularPosts.forEach(post => { %>
+    <div class="post">
+      <img src="<%= post.image %>" alt="<%= post.title %>">
+      <h3><%= post.title %></h3>
+      <p>Ngày đăng: <%= post.date %></p>
+      <p>Chuyên mục: <%= post.category %></p>
+    </div>
+  <% }) %>
+</section>
+
+<!-- Bài viết mới nhất -->
+<section id="latest-posts">
+  <h2>Bài viết mới nhất</h2>
+  <% latestPosts.forEach(post => { %>
+    <div class="post">
+      <img src="<%= post.image %>" alt="<%= post.title %>">
+      <h3><%= post.title %></h3>
+      <p>Ngày đăng: <%= post.date %></p>
+      <p>Chuyên mục: <%= post.category %></p>
+    </div>
+  <% }) %>
+</section>
+
+<!-- Top chuyên mục -->
+<section id="top-categories">
+  <h2>Top chuyên mục</h2>
+  <% topCategories.forEach(cat => { %>
+    <div class="category">
+      <h3><%= cat.name %></h3>
+      <% if (cat.latestPost) { %>
+        <h4>Bài viết mới nhất: <%= cat.latestPost.title %> - <%= cat.latestPost.date %></h4>
+      <% } %>
+    </div>
+  <% }) %>
+</section>

@@ -1,0 +1,28 @@
+<h1><%= post.title %></h1>
+<img src="<%= post.image %>" alt="<%= post.title %>">
+<p>Ngày đăng: <%= post.date %></p>
+<p>Chuyên mục: <%= post.category %></p>
+<p>Danh sách nhãn: <%= post.tags.join(', ') %></p>
+<div id="content">
+  <p><%= post.content %></p>
+</div>
+
+<!-- Danh sách bình luận -->
+<section id="comments">
+  <h2>Bình luận</h2>
+  <% post.comments.forEach(comment => { %>
+    <div class="comment">
+      <p><%= comment.date %> - <%= comment.user %>: <%= comment.content %></p>
+    </div>
+  <% }) %>
+</section>
+
+<!-- Đăng bình luận mới -->
+<section id="new-comment">
+  <h2>Đăng bình luận</h2>
+  <form action="/post/<%= post.title %>/comment" method="post">
+    <input type="text" name="username" placeholder="Tên của bạn" required>
+    <textarea name="content" placeholder="Nội dung bình luận" required></textarea>
+    <button type="submit">Đăng</button>
+  </form>
+</section>

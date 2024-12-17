@@ -1,0 +1,14 @@
+<h1>Menu</h1>
+<ul>
+  <% categories.forEach(category => { %>
+    <li><a href="/category/<%= category.name %>"><%= category.name %></a>
+      <% if (category.subCategories) { %>
+        <ul>
+          <% category.subCategories.forEach(sub => { %>
+            <li><a href="/category/<%= sub %>"><%= sub %></a></li>
+          <% }) %>
+        </ul>
+      <% } %>
+    </li>
+  <% }) %>
+</ul>

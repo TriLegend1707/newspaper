@@ -1,0 +1,23 @@
+<h1><%= category %></h1>
+<ul class="post-list">
+  <% categoryPosts.forEach(post => { %>
+    <li class="post-item">
+      <img src="<%= post.image %>" alt="<%= post.title %>">
+      <h3><%= post.title %></h3>
+      <p>Ngày đăng: <%= post.date %></p>
+      <p>Chuyên mục: <%= post.category %></p>
+      <p>Danh sách nhãn: <%= post.tags.join(', ') %></p>
+      <a href="/post/<%= post.title %>">Xem chi tiết</a>
+    </li>
+  <% }) %>
+</ul>
+
+<!-- Phân trang -->
+<nav>
+  <ul class="pagination">
+    <!-- Tạo các trang phân trang tương ứng -->
+    <li><a href="/category/<%= category %>?page=1">1</a></li>
+    <li><a href="/category/<%= category %>?page=2">2</a></li>
+    <!-- thêm các trang khác... -->
+  </ul>
+</nav>
