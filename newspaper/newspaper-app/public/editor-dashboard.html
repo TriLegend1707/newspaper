@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor Dashboard</title>
+</head>
+<body>
+    <h1>Editor Dashboard</h1>
+    <h2>Drafts</h2>
+    <div id="drafts"></div>
+
+    <script>
+        async function fetchDrafts() {
+            const response = await fetch('/editors/drafts', {
+                headers: { email: 'editor@example.com' } // Replace with actual editor's email
+            });
+            const drafts = await response.json();
+            const draftsDiv = document.getElementById('drafts');
+            drafts.forEach(draft => {
+                const articleDiv = document.createElement('div');
+                articleDiv.innerHTML = `
+                    <h3>${draft.title}</h3>
+                    <p>${draft.summary}</p>
+                    <button onclick="approveArticle('${draft._id}')">Approve</button>
+                    <button onclick="rejectArticle('${draft._id}')">Reject</button>
+                `;
+                draftsDiv.appendChild(articleDiv);
+            });
+        }
+
+        async function approveArticle(id) {
+            await fetch(`/editors/${id}/approve`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    email: 'editor@example.com', // Replace with actual editor's email
+                },
+                body: JSON.stringify({ publishDate: new Date().toISOString() }),
+            });
+            alert('Article approved!');
+            location.reload();
+        }
+
+        async function rejectArticle(id) {
+            const reason = prompt('Enter rejection reason:');
+            if (!reason) return;
+
+            await fetch(`/editors/${id}/reject`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    email: 'editor@example.com', // Replace with actual editor's email
+                },
+                body: JSON.stringify({ rejectionReason: reason }),
+            });
+            alert('Article rejected!');
+            location.reload();
+        }
+
+        fetchDrafts();
+    </script>
+</body>
+</html>

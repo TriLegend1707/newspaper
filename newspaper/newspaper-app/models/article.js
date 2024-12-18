@@ -43,9 +43,14 @@ const articleSchema = new mongoose.Schema({
             type: String,
             required: true
         }
+       
     }]
+    
 });
 
 const Article = mongoose.model('Article', articleSchema);
 
 module.exports = Article;
+const mongoose = require('mongoose');
+
+
