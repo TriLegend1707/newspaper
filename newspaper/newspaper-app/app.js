@@ -147,3 +147,5 @@ app.use('/articles', articleRoutes);
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
 });
+const adminRoutes = require('./routes/admin');
+app.use('/admin', adminRoutes);

@@ -32,3 +32,12 @@ const authenticateEditor = async (req, res, next) => {
 };
 
 module.exports = { authenticateEditor };
+const authenticateAdmin = async (req, res, next) => {
+    const isAdmin = req.header('admin'); // Simplified: Pass admin flag in header
+    if (!isAdmin) {
+        return res.status(401).send('Unauthorized: Admin access required');
+    }
+    next();
+};
+
+module.exports = { authenticateAdmin };
