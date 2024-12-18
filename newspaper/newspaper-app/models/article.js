@@ -1,4 +1,3 @@
-// models/article.js
 const mongoose = require('mongoose');
 
 const articleSchema = new mongoose.Schema({
@@ -43,14 +42,10 @@ const articleSchema = new mongoose.Schema({
             type: String,
             required: true
         }
-       
     }]
-    
 });
 
+// Tạo mô hình Article
 const Article = mongoose.model('Article', articleSchema);
 
 module.exports = Article;
-const mongoose = require('mongoose');
-
-
