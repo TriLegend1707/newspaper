@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Báo Điện Tử</title>
+    <link rel="stylesheet" href="C:\Users\TDT\Desktop\Web final\web.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="main-menu">
+            <ul>
+                <li><a href="/">Trang Chủ</a></li>
+                <li><a href="/category/kinh-doanh">Kinh Doanh</a>
+                    <ul class="submenu">
+                        <li><a href="/category/kinh-doanh/nong-san">Nông Sản</a></li>
+                        <li><a href="/category/kinh-doanh/hai-san">Hải Sản</a></li>
+                    </ul>
+                </li>
+                <li><a href="/category/cong-nghe">Công Nghệ</a></li>
+                <li><a href="/search">Tìm Kiếm</a></li>
+            </ul>
+        </nav>
+    </header>
+    <form action="/search" method="GET" id="search-form">
+        <input type="text" name="query" placeholder="Tìm kiếm bài viết..." required>
+        <button type="submit">Tìm Kiếm</button>
+    </form>
+    
+    <!-- Slideshow -->
+    <section class="slideshow">
+        <div class="slide">
+            <img src="C:\Users\TDT\Desktop\Web final\image\images.baoquangnam.vn-storage-newsportal-2019-11-12-71434-_tnb-12361.jpg" alt="Bài Viết Nổi Bật">
+            <h2>Từ kinh doanh chuyển sang khai thác hải sản</h2>
+        </div>
+        <div class="slide">
+            <img src="C:\Users\TDT\Desktop\Web final\image\2_Thumbnail_min.webp" alt="Bài Viết Nổi Bật">
+            <h2>Từ kinh doanh chuyển sang làm nông sản</h2>
+    </section>
+    <section>
+        <h1>Bài viết nổi bật</h1>
+        <article>
+            <h2>Ngành Hải Sản Đang Phát Triển</h2>
+            <p>Chuyên mục: <a href="kinh-doanh.html">Kinh Doanh</a> ➠ <a href="hai-san.html">Hải Sản</a></p>
+            <p>Ngày đăng: <time datetime="2024-11-10">10/11/2024</time></p>
+            <img src="C:\Users\TDT\Desktop\Web final\image\tải xuống.jpg" alt="Hình ảnh Hải sản" />
+            <p>Ngành hải sản đã đạt mức tăng trưởng ấn tượng trong năm nay với các chính sách mới hỗ trợ ngư dân...</p>
+            <a href="chi-tiet-bai-viet.html">Đọc thêm</a>
+        </article>
+        <section id="comment-section">
+            <h3>Đăng Bình Luận</h3>
+            <form action="/submit-comment" method="POST">
+                <div>
+                    <label for="name">Tên của bạn:</label>
+                    <input type="text" id="name" name="name" required placeholder="Nhập tên của bạn">
+                </div>
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required placeholder="Nhập email của bạn">
+                </div>
+                <div>
+                    <label for="comment">Bình luận:</label>
+                    <textarea id="comment" name="comment" rows="5" required placeholder="Nhập nội dung bình luận"></textarea>
+                </div>
+                <button type="submit">Gửi Bình Luận</button>
+            </form>
+        </section>
+        
+        <article>
+            <h2>Xuất Khẩu Nông Sản Việt Nam Tăng Mạnh</h2>
+            <p>Chuyên mục: <a href="kinh-doanh.html">Kinh Doanh</a> ➠ <a href="nong-san.html">Nông Sản</a></p>
+            <p>Ngày đăng: <time datetime="2024-11-09">09/11/2024</time></p>
+            <img src="C:\Users\TDT\Desktop\Web final\image\tải xuống (1).jpg" alt="Hình ảnh Nông sản" />
+            <p>Nông sản Việt Nam đang khẳng định vị thế trên thị trường quốc tế với kim ngạch xuất khẩu đạt kỷ lục...</p>
+            <a href="chi-tiet-bai-viet.html">Đọc thêm</a>
+        </article>
+    </section>
+    <section id="comment-section">
+        <h3>Đăng Bình Luận</h3>
+        <form action="/submit-comment" method="POST">
+            <div>
+                <label for="name">Tên của bạn:</label>
+                <input type="text" id="name" name="name" required placeholder="Nhập tên của bạn">
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required placeholder="Nhập email của bạn">
+            </div>
+            <div>
+                <label for="comment">Bình luận:</label>
+                <textarea id="comment" name="comment" rows="5" required placeholder="Nhập nội dung bình luận"></textarea>
+            </div>
+            <button type="submit">Gửi Bình Luận</button>
+        </form>
+    </section>
+    
+<section>
+    <h1>Bài viết nổi bật</h1>
+    <article class="article-item">
+        <h2>Ngành Hải Sản Đang Phát Triển</h2>
+        <p>Chuyên mục: <a href="#">Kinh Doanh</a> ➠ <a href="#">Hải Sản</a></p>
+        <p>Ngày đăng: <time datetime="2024-11-10">10/11/2024</time></p>
+        <img src="C:\Users\TDT\Desktop\Web final\image\tải xuống.jpg" alt="Hình ảnh Hải sản" />
+        <p>Ngành hải sản đã đạt mức tăng trưởng ấn tượng trong năm nay...</p>
+        <a href="#" class="read-more">Đọc thêm</a>
+    </article>
+</section>
+
+    <!-- Top Articles -->
+    <section class="top-articles">
+        <h3>10 Bài Viết Được Xem Nhiều Nhất</h3>
+        <ul>
+            <li>
+                <img src="C:\Users\TDT\Desktop\Web final\image\tải xuống.jpg" alt="Bài Viết">
+                <a href="/article/1">Ngành hải sản đang phát triển</a>
+                <p>Chuyên mục: <a href="kinh-doanh.html">Kinh Doanh</a> ➠ <a href="hai-san.html">Hải Sản</a></p>
+            </li>
+            <!-- Các bài viết khác -->
+        </ul>
+    </section>
+
+    <!-- Latest Articles -->
+    <section class="latest-articles">
+        <h3>10 Bài Viết Mới Nhất</h3>
+        <ul>
+            <!-- Bài viết -->
+        </ul>
+    </section>
+
+    <!-- Top Categories -->
+    <section class="top-categories">
+        <h3>Top 10 Chuyên Mục</h3>
+        <div class="category-grid">
+            <div class="category-item">
+                <h4>Kinh Doanh</h4>
+                <a href="/article/1"><img src="thumb1.jpg" alt="Bài Viết"></a>
+                <p>Tiêu đề bài viết</p>
+            </div>
+            <!-- Các chuyên mục khác -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Báo Điện Tử</p>
+        <section id="contact-section">
+            <h2>Liên Hệ Với Chúng Tôi</h2>
+            <form action="/contact" method="POST">
+                <div>
+                    <label for="name">Tên của bạn:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div>
+                    <label for="message">Lời nhắn:</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit">Gửi</button>
+            </form>
+            
+        </section>
+        
+    </footer>
+    <form id="register-form">
+        <label for="username">Tên đăng nhập:</label>
+        <input type="text" id="username" name="username" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="password">Mật khẩu:</label>
+        <input type="password" id="password" name="password" required>
+        <button type="submit">Đăng Ký</button>
+    </form>
+    <script>
+        let slides = document.querySelectorAll(".slideshow .slide");
+let index = 0;
+
+function showSlide() {
+    slides.forEach((slide, i) => {
+        slide.style.display = i === index ? "block" : "none";
+    });
+    index = (index + 1) % slides.length;
+}
+
+setInterval(showSlide, 5000);
+document.querySelectorAll('.read-more').forEach(link => {
+    link.addEventListener('click', (event) => {
+        event.preventDefault();
+        alert('Chuyển đến chi tiết bài viết!');
+        window.location.href = event.target.href;
+    });
+});
+// Lấy các thành phần
+const loginModal = document.getElementById('login-modal');
+const openLoginModalButton = document.getElementById('open-login-modal');
+const closeLoginModalButton = loginModal.querySelector('.close');
+
+// Mở modal đăng nhập
+openLoginModalButton.addEventListener('click', () => {
+    loginModal.style.display = 'block';
+});
+
+// Đóng modal đăng nhập
+closeLoginModalButton.addEventListener('click', () => {
+    loginModal.style.display = 'none';
+});
+
+// Đóng modal khi bấm ra ngoài
+window.addEventListener('click', (event) => {
+    if (event.target === loginModal) {
+        loginModal.style.display = 'none';
+    }
+});
+document.querySelector('#comment-section form').addEventListener('submit', function(e) {
+    const name = document.getElementById('name').value.trim();
+    const comment = document.getElementById('comment').value.trim();
+
+    if (!name || !comment) {
+        alert('Vui lòng điền đầy đủ thông tin.');
+        e.preventDefault(); // Ngăn chặn gửi form
+    }
+});
+document.querySelector('#register-form').addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    // Lấy dữ liệu từ form
+    const formData = new FormData(event.target);
+
+    // Gửi yêu cầu đến backend
+    const response = await fetch('/register', {
+        method: 'POST',
+        body: formData
+    });
+
+    const result = await response.text();
+    alert(result); // Hiển thị phản hồi từ backend
+});
+app.post('/register', (req, res) => {
+    const { username, email, password } = req.body;
+    res.send(`Người dùng ${username} đã được đăng ký!`);
+});
+app.post('/register', (req, res) => {
+    const { name, email, password } = req.body;
+    const expiryDate = new Date();
+    expiryDate.setMinutes(expiryDate.getMinutes() + 7 * 24 * 60);  // Thời gian hết hạn tài khoản là 7 ngày
+
+    // Lưu thông tin người dùng vào cơ sở dữ liệu
+    db.query('INSERT INTO users (name, email, password, expiry_date) VALUES (?, ?, ?, ?)', [name, email, password, expiryDate], (err, result) => {
+        if (err) throw err;
+        res.send("Đăng ký thành công!");
+    });
+});
+app.post('/login', (req, res) => {
+    const { email, password } = req.body;
+
+    // Kiểm tra thông tin đăng nhập
+    db.query('SELECT * FROM users WHERE email = ? AND password = ?', [email, password], (err, result) => {
+        if (err) throw err;
+        if (result.length === 0) {
+            return res.send("Thông tin đăng nhập sai!");
+        }
+
+        const user = result[0];
+        const currentDate = new Date();
+
+        // Kiểm tra xem tài khoản đã hết hạn chưa
+        if (new Date(user.expiry_date) < currentDate) {
+            return res.send("Tài khoản đã hết hạn. Vui lòng gia hạn.");
+        }
+
+        // Đăng nhập thành công
+        res.send("Đăng nhập thành công!");
+    });
+});
+app.post('/renew', (req, res) => {
+    const { email } = req.body;
+
+    // Cập nhật lại thời gian hết hạn tài khoản
+    const newExpiryDate = new Date();
+    newExpiryDate.setMinutes(newExpiryDate.getMinutes() + 7 * 24 * 60);  // Gia hạn thêm 7 ngày
+
+    db.query('UPDATE users SET expiry_date = ? WHERE email = ?', [newExpiryDate, email], (err, result) => {
+        if (err) throw err;
+        res.send("Tài khoản đã được gia hạn thành công!");
+    });
+});
+const mysql = require('mysql2');
+
+// Tạo kết nối tới cơ sở dữ liệu
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: '',
+  database: 'news_website'
+});
+
+// Truy vấn bài viết premium
+connection.query('SELECT * FROM articles WHERE is_premium = 1 ORDER BY created_at DESC', (err, results) => {
+  if (err) {
+    console.error(err);
+  } else {
+    results.forEach(row => {
+      console.log(`Tiêu đề: ${row.title}, Ngày đăng: ${row.created_at}`);
+    });
+  }
+  connection.end();
+});
+app.get('/posts', (req, res) => {
+    const userId = req.session.userId;
+
+    db.query('SELECT * FROM posts WHERE premium = TRUE ORDER BY created_at DESC', (err, premiumPosts) => {
+        if (err) throw err;
+
+        // Hiển thị các bài viết premium trước
+        db.query('SELECT * FROM posts WHERE premium = FALSE ORDER BY created_at DESC', (err, regularPosts) => {
+            if (err) throw err;
+
+            res.render('posts', { premiumPosts, regularPosts });
+        });
+    });
+});
+app.get('/download/:postId', (req, res) => {
+    const postId = req.params.postId;
+
+    // Kiểm tra xem bài viết có premium và người dùng có quyền tải không
+    db.query('SELECT * FROM posts WHERE id = ?', [postId], (err, result) => {
+        if (err) throw err;
+
+        const post = result[0];
+        if (!post.premium) {
+            return res.send("Bài viết này không phải là premium.");
+        }
+
+        // Kiểm tra quyền truy cập người dùng (có tài khoản và còn thời gian)
+    });
+});
+
+    </script>
+    <!-- Nút mở form đăng nhập -->
+<!-- Nút mở form đăng ký -->
+<button id="open-register-modal">Đăng Ký</button>
+
+<!-- Modal đăng ký -->
+<div id="register-modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Đăng Ký Thành Viên</h2>
+        <form action="/register" method="POST">
+            <div>
+                <label for="username">Tên đăng nhập:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div>
+                <label for="password">Mật khẩu:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div>
+                <label for="confirm-password">Nhập lại mật khẩu:</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+            </div>
+            <button type="submit">Đăng Ký</button>
+        </form>
+        <form action="/register" method="POST">
+            <label for="name">Tên đầy đủ:</label>
+            <input type="text" id="name" name="name" required><br>
+        
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br>
+        
+            <label for="password">Mật khẩu:</label>
+            <input type="password" id="password" name="password" required><br>
+        
+            <button type="submit">Đăng ký</button>
+        </form>
+        <form action="/login" method="POST">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br>
+        
+            <label for="password">Mật khẩu:</label>
+            <input type="password" id="password" name="password" required><br>
+        
+            <button type="submit">Đăng nhập</button>
+        </form>
+        <form action="/renew" method="POST">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br>
+        
+            <button type="submit">Gia hạn tài khoản</button>
+        </form>  
+    </div>
+    <form id="article-form" method="POST" action="/submit-article" enctype="multipart/form-data">
+        <label for="title">Tiêu đề:</label>
+        <input type="text" id="title" name="title" required>
+    
+        <label for="summary">Tóm tắt:</label>
+        <textarea id="summary" name="summary" rows="3" required></textarea>
+    
+        <label for="content">Nội dung:</label>
+        <textarea id="content" name="content" required></textarea>
+    
+        <label for="category">Chuyên mục:</label>
+        <select id="category" name="category" required>
+            <option value="kinh-doanh">Kinh Doanh</option>
+            <option value="giao-duc">Giáo Dục</option>
+            <option value="suc-khoe">Sức Khỏe</option>
+            <!-- Thêm các chuyên mục khác -->
+        </select>
+    
+        <label for="tags">Nhãn (cách nhau bằng dấu phẩy):</label>
+        <input type="text" id="tags" name="tags">
+    
+        <label for="image">Hình ảnh:</label>
+        <input type="file" id="image" name="image">
+    
+        <label for="youtube">Link YouTube:</label>
+        <input type="url" id="youtube" name="youtube">
+    
+        <button type="submit">Đăng bài</button>
+    </form>
+    <div>
+        <button onclick="filterArticles('pending')">Chờ duyệt</button>
+        <button onclick="filterArticles('approved')">Đã xuất bản</button>
+        <button onclick="filterArticles('rejected')">Bị từ chối</button>
+        <button onclick="filterArticles('draft')">Chưa duyệt</button>
+    </div>
+    
+    <div id="article-list">
+        <!-- Danh sách bài viết sẽ được hiển thị ở đây -->
+    </div>
+    <form id="edit-article-form" method="POST" action="/edit-article" enctype="multipart/form-data">
+        <input type="hidden" id="article-id" name="article-id">
+    
+        <label for="edit-title">Tiêu đề:</label>
+        <input type="text" id="edit-title" name="title" required>
+    
+        <label for="edit-summary">Tóm tắt:</label>
+        <textarea id="edit-summary" name="summary" rows="3" required></textarea>
+    
+        <label for="edit-content">Nội dung:</label>
+        <textarea id="edit-content" name="content" required></textarea>
+    
+        <label for="edit-category">Chuyên mục:</label>
+        <select id="edit-category" name="category" required>
+            <option value="kinh-doanh">Kinh Doanh</option>
+            <option value="giao-duc">Giáo Dục</option>
+            <option value="suc-khoe">Sức Khỏe</option>
+        </select>
+    
+        <button type="submit">Lưu thay đổi</button>
+    </form>
+    
+    <script>
+        function editArticle(articleId) {
+            // Lấy thông tin bài viết qua API
+            fetch(`/get-article?id=${articleId}`)
+                .then(response => response.json())
+                .then(article => {
+                    document.getElementById('article-id').value = article.id;
+                    document.getElementById('edit-title').value = article.title;
+                    document.getElementById('edit-summary').value = article.summary;
+                    CKEDITOR.instances['edit-content'].setData(article.content);
+                    document.getElementById('edit-category').value = article.category;
+                });
+    
+            // Hiển thị form chỉnh sửa (ví dụ sử dụng modal)
+            document.getElementById('edit-article-form').style.display = 'block';
+        }
+    </script>
+    
+    <script>
+        function filterArticles(status) {
+            fetch(`/get-articles?status=${status}`)
+                .then(response => response.json())
+                .then(data => {
+                    const articleList = document.getElementById('article-list');
+                    articleList.innerHTML = '';
+                    data.forEach(article => {
+                        articleList.innerHTML += `
+                            <div class="article">
+                                <h3>${article.title}</h3>
+                                <p>${article.summary}</p>
+                                <span>Chuyên mục: ${article.category}</span>
+                                <span>Trạng thái: ${article.status}</span>
+                                ${article.status === 'rejected' || article.status === 'draft' ? 
+                                    `<button onclick="editArticle(${article.id})">Sửa</button>` 
+                                    : ''}
+                            </div>
+                        `;
+                    });
+                });
+        }
+    </script>
+    
+    <!-- CKEditor -->
+    <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace('content');
+    </script>
+    
+</div>
+
+
+</body>
+</html>

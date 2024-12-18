@@ -58,3 +58,9 @@ app.listen(port, () => {
         await client.close(); // Đóng kết nối sau khi hoàn thành
     }
 })();
+// Đảm bảo rằng bạn đang trả về một file HTML cho người dùng truy cập vào trang chủ
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+const cors = require('cors');
+app.use(cors());

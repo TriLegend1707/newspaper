@@ -3,7 +3,7 @@ const Category = require('../models/category');
 const Tag = require('../models/tag');
 const Article = require('../models/article');
 const User = require('../models/user'); // Generic user model (Writer, Editor, Subscriber)
-const { authenticateAdmin } = require('../utils/auth');
+const { authenticateAdmin } = require('../utils/auth'); // Giữ khai báo này ở đầu tệp
 
 const router = express.Router();
 
